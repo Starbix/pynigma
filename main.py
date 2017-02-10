@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+
 dencode = input("Do you want to encode or decode ? [encode/decode] ")
 
 if dencode == "encode":
@@ -12,5 +13,7 @@ elif dencode == "decode":
   output = input()
   print('encoding: ' + decoding)
 else:
+  sys.stdout.write("\033[1;31m")
   print("Unknown command")
+  sys.stdout.write("\033[0;0m")
   sys.exit(127)
