@@ -19,6 +19,14 @@ Here's how it works:
     11. Pass through plugboard (currently NOT supported)
     12. Convert to output letter
 
-Resources:
+##Numbers
+
+Numbers:
+[number](http://enigma.louisedade.co.uk/numberkeys.png)
+
+To include numbers in your message, you first need to indicate that you are about to use a number by entering the letter "Y" before each number. So, to encode the number 5 in your message you would type in "YT", the number 6 would be "YZ", and 42 would be "YRW".
+
+
+##Resources
 - http://enigma.louisedade.co.uk/howitworks.html
 - https://de.wikipedia.org/wiki/Enigma-Walzen (Rotor information)
