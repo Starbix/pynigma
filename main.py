@@ -2,7 +2,9 @@
 
 import sys
 
-dencode = input("Do you want to encode or decode ? [encode/decode] ")
+firstWheel = input("What should the first wheel be? (each wheel can only be used once) [I/II/III/IV/V] ")
+
+input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space. ")
 
 if dencode == "encode":
   print("Please type your text in CAPITAL letters and use 'x' as space. ")
