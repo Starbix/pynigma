@@ -3,6 +3,16 @@
 import sys
 import string
 
+class colors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    RED = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 ABC = list(string.ascii_uppercase)
 
 I = ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J']
@@ -25,22 +35,18 @@ firstWheel = input("What should the first rotor be? (each rotor can only be used
 
 input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space. ")
 
+if len(set(string.ascii_uppercase).intersection(input)) != len(input):
+    print(colors.RED + colors.BOLD +  "Please only enter CAPITAL LETTERS")
+    if len(set(string.digits).intersection(input)) > 0:
+        print("and NO digits")
+    if (' ' in input):
+        print("and no space!")
+    print(colors.ENDC)
+    exit(127)
+
+
 textArray = list(input)
 
 #length = len(textArray)
 
 for i in range(0,len(textArray)):
-
-if dencode == "encode":
-  print("Please type your text in CAPITAL letters and use 'x' as space. ")
-  input = input()
-  print('encoding: ' + input)
-elif dencode == "decode":
-  print("Please type your text in CAPITAL letters. ")
-  output = input()
-  print('encoding: ' + decoding)
-else:
-  sys.stdout.write("\033[1;31m")
-  print("Unknown command")
-  sys.stdout.write("\033[0;0m")
-  sys.exit(127)
