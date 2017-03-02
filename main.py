@@ -2,6 +2,7 @@
 
 import sys
 import string
+from collections import deque
 
 class colors:
     HEADER = '\033[95m'
@@ -31,16 +32,16 @@ reflectorC = ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', '
 reflectorBthin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 'L', 'M', 'D', 'X', 'Z', 'V', 'F', 'T', 'H', 'R', 'G', 'S']
 reflectorCthin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
-firstRotor = input("What should the first rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
-secondRotor = input("What should the second rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
-thirdRotor = input("What should the third rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
+firstRotor = input("What should the " + colors.BOLD + "first " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
+secondRotor = input("What should the " + colors.BOLD + "second " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
+thirdRotor = input("What should the " + colors.BOLD + "third " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
 #fourthRotor
 input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space or a stop. ")
 
-if len(set(string.ascii_uppercase).intersection(input)) != len(input):
-    print(colors.RED + colors.BOLD +  "Please only enter CAPITAL LETTERS")
-    if len(set(string.digits).intersection(input)) > 0:
-        print("and NO digits")
+input = input.upper()
+
+if len(set(string.digits).intersection(input)) > 0:
+    print(colors.RED + colors.BOLD +  "Refer to the README. Don't use digits")
     if (' ' in input):
         print("and no space!")
     print(colors.ENDC)
@@ -52,3 +53,5 @@ textArray = list(input)
 #length = len(textArray)
 
 for i in range(0,len(textArray)):
+    def shift(key, array):
+        return array[-key:] + array[:-key]
