@@ -32,9 +32,9 @@ reflectorC = ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', '
 reflectorBthin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 'L', 'M', 'D', 'X', 'Z', 'V', 'F', 'T', 'H', 'R', 'G', 'S']
 reflectorCthin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
-firstRotor = input("What should the " + colors.BOLD + "first " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
-secondRotor = input("What should the " + colors.BOLD + "second " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
-thirdRotor = input("What should the " + colors.BOLD + "third " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] ")
+firstRotor = eval(input("What should the " + colors.BOLD + "first " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
+secondRotor = eval(input("What should the " + colors.BOLD + "second " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
+thirdRotor = eval(input("What should the " + colors.BOLD + "third " + colors.ENDC + "rotor be? (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
 #fourthRotor
 input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space or a stop. ")
 
