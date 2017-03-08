@@ -75,67 +75,67 @@ def shift(array):
     return array[1:] + array[:1]
 
 for i in range(0,len(textArray)):
-    shift(firstRotor)
+    firstRotor=shift(firstRotor)
 #check if any is at the turnover notch position
     if firstRotor == I:
         if firstRotor[0] == 'U':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == II:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == III:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == IV:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == V:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == VI:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == VII:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == VIII:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == beta:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif firstRotor == gamma:
         if firstRotor[0] == 'P':
-            shift(secondRotor)
+            secondRotor = shift(secondRotor)
     elif secondRotor == I:
         if secondRotor[0] == 'U':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == II:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == III:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == IV:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == V:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == VI:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == VII:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == VIII:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == beta:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
     elif secondRotor == gamma:
         if secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor)
 
-    print(colors.GREEN + colors.BOLD + reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])], end="")
+    print(colors.GREEN + colors.BOLD + reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])] + colors.ENDC, end="")
