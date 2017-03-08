@@ -70,6 +70,69 @@ textArray = list(input)
 
 #length = len(textArray)
 
+#check if it's the correct way!!!
+def shift(array):
+    return array[1:] + array[:1]
+
 for i in range(0,len(textArray)):
-    def shift(key, array):
-        return array[-key:] + array[:-key]
+    shift(firstRotor)
+    if firstRotor == I:
+        if firstRotor[0] == 'U':
+            shift(secondRotor)
+    elif firstRotor == II:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == III:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == IV:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == V:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == VI:
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == VII:
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == VIII:
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == beta:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif firstRotor == gamma:
+        if firstRotor[0] == 'P':
+            shift(secondRotor)
+    elif secondRotor == I:
+        if secondRotor[0] == 'U':
+            shift(thirdRotor)
+    elif secondRotor == II:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == III:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == IV:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == V:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == VI:
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == VII:
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == VIII:
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == beta:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
+    elif secondRotor == gamma:
+        if secondRotor[0] == 'P':
+            shift(thirdRotor)
