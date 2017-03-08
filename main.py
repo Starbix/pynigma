@@ -5,7 +5,7 @@ import string
 from collections import deque
 import os
 
-if os.name == posix:
+if os.name == "posix":
     class colors:
         HEADER = '\033[95m'
         BLUE = '\033[94m'
@@ -25,7 +25,7 @@ else:
         ENDC = ''
         BOLD = ''
         UNDERLINE = ''
-    
+
 
 ABC = list(string.ascii_uppercase)
 
@@ -53,7 +53,7 @@ thirdRotor = eval(input("Choose the " + colors.BOLD + "third " + colors.ENDC + "
 if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == thirdRotor:
     print("Each rotor can only be used once")
     exit()
-    
+
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
 input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space or a stop. ")
 
@@ -65,7 +65,7 @@ if len(set(string.digits).intersection(input)) > 0:
         print("and no space!")
     print(colors.ENDC)
     exit(127)
-    
+
 textArray = list(input)
 
 #length = len(textArray)
