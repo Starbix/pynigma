@@ -76,6 +76,7 @@ def shift(array):
 
 for i in range(0,len(textArray)):
     shift(firstRotor)
+#check if any is at the turnover notch position
     if firstRotor == I:
         if firstRotor[0] == 'U':
             shift(secondRotor)
@@ -135,4 +136,6 @@ for i in range(0,len(textArray)):
             shift(thirdRotor)
     elif secondRotor == gamma:
         if secondRotor[0] == 'P':
-            shift(thirdRotor)
+            thirdRotor = shift(thirdRotor)
+
+    print(colors.GREEN + colors.BOLD + reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])], end="")
