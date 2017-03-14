@@ -32,6 +32,7 @@ ABC = list(string.ascii_uppercase)
 I = ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J']
 II = ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E']
 III = ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O']
+IIIreverse = ['T', 'A', 'G', 'B', 'C', 'S', 'D', 'Q', 'E', 'U', 'F', 'V', 'N', 'O']
 IV = ['E', 'S', 'O', 'V', 'P', 'Z', 'J', 'A', 'Y', 'Q', 'U', 'I', 'R', 'H', 'X', 'L', 'N', 'F', 'T', 'G', 'K', 'D', 'C', 'M', 'W', 'B']
 V = ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 'X', 'A', 'W', 'M', 'J', 'Q', 'O', 'F', 'E', 'C', 'K']
 VI = ['J', 'P', 'G', 'V', 'O', 'U', 'M', 'F', 'Y', 'Q', 'B', 'E', 'N', 'H', 'Z', 'R', 'D', 'K', 'A', 'S', 'X', 'L', 'I', 'C', 'T', 'W']
@@ -70,7 +71,11 @@ if len(set(string.digits).intersection(input)) > 0:
 
 textArray = list(input)
 
-#length = len(textArray)
+def reverse(array):
+    reverseRotor = []
+    for s in range(0, 26):
+        reverseRotor.append(ABC[array.index(ABC[s])])
+    return reverseRotor
 
 #check if it's the correct way!!!
 def shift(array):
@@ -86,7 +91,7 @@ for i in range(0,len(textArray)):
         if firstRotor[0] == 'I':
             secondRotor = shift(secondRotor)
     elif firstRotorStatic == III:
-        if firstRotor[0] == 'U':
+        if firstRotor[0] == 'L':
             secondRotor = shift(secondRotor)
     elif firstRotorStatic == IV:
         if firstRotor[0] == 'P':
@@ -116,7 +121,7 @@ for i in range(0,len(textArray)):
         if secondRotor[0] == 'I':
             thirdRotor = shift(thirdRotor)
     elif secondRotorStatic == III:
-        if secondRotor[0] == 'U':
+        if secondRotor[0] == 'L':
             thirdRotor = shift(thirdRotor)
     elif secondRotorStatic == IV:
         if secondRotor[0] == 'U':
@@ -140,4 +145,8 @@ for i in range(0,len(textArray)):
         if secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor)
 
-    print(colors.GREEN + colors.BOLD + firstRotor[ABC.index(secondRotor[ABC.index(thirdRotor[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
+    firstRotorReversed = reverse(firstRotor)
+    secondRotorReversed = reverse(secondRotor)
+    thirdRotorReversed = reverse(thirdRotor)
+
+    print(colors.GREEN + colors.BOLD + firstRotorReversed[ABC.index(secondRotorReversed[ABC.index(thirdRotorReversed[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
