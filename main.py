@@ -47,6 +47,7 @@ B_thin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 
 C_thin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
 firstRotor = eval(input("Choose the " + colors.BOLD + "first " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
+
 firstRotorStatic = firstRotor
 secondRotor = eval(input("Choose the " + colors.BOLD + "second " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
 secondRotorStatic = secondRotor
@@ -57,8 +58,30 @@ if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == third
     print("Each rotor can only be used once")
     exit()
 
+firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] "))
+if 0 > firstRotorPosition or firstRotorPosition > 26:
+    print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
+    firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] "))
+    if 0 > firstRotorPosition or firstRotorPosition > 26:
+        print(colors.RED +"Choose a value between 1 and 26" + colors.ENDC)
+        exit()
+secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] "))
+if 0 > secondRotorPosition or secondRotorPosition > 26:
+    print("Choose a value between 1 and 26")
+    secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] "))
+    if 0 > secondRotorPosition or secondRotorPosition > 26:
+        print("Choose a value between 1 and 26")
+        exit()
+thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] "))
+if 0 > thirdRotorPosition or thirdRotorPosition > 26:
+    print("Choose a value between 1 and 26")
+    thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] "))
+    if 0 > thirdRotorPosition or thirdRotorPosition > 26:
+        print("Choose a value between 1 and 26")
+        exit()
+
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
-input = input("Please type your text you want to decode or encode in CAPITAL letters and use 'X' as space or a stop. ")
+input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
 input = input.upper()
 
@@ -78,72 +101,76 @@ def reverse(array):
     return reverseRotor
 
 #check if it's the correct way!!!
-def shift(array):
-    return array[1:] + array[:1]
+def shift(array, int):
+    return array[int:] + array[:int]
+
+firstRotor=shift(firstRotor, firstRotorPosition)
+secondRotor=shift(secondRotor, secondRotorPosition)
+thirdRotor=shift(thirdRotor, thirdRotorPosition)
 
 for i in range(0,len(textArray)):
-    firstRotor=shift(firstRotor)
+    firstRotor=shift(firstRotor, 1)
 #check if any is at the turnover notch position
     if firstRotorStatic == I:
         if firstRotor[0] == 'U':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == II:
         if firstRotor[0] == 'I':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == III:
         if firstRotor[0] == 'L':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == IV:
         if firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == V:
         if firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VI:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VII:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VIII:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == beta:
         if firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == gamma:
         if firstRotor[0] == 'P':
-            secondRotor = shift(secondRotor)
+            secondRotor = shift(secondRotor, 1)
     elif secondRotorStatic == I:
         if secondRotor[0] == 'U':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == II:
         if secondRotor[0] == 'I':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == III:
         if secondRotor[0] == 'L':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == IV:
         if secondRotor[0] == 'U':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == V:
         if secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VI:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VII:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VIII:
         if secondRotor[0] == 'P' or secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == beta:
         if secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == gamma:
         if secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor)
+            thirdRotor = shift(thirdRotor, 1)
 
     firstRotorReversed = reverse(firstRotor)
     secondRotorReversed = reverse(secondRotor)
