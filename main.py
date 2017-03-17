@@ -168,9 +168,6 @@ for i in range(0,len(textArray)):
     elif secondRotorStatic == beta:
         if secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
-    elif secondRotorStatic == gamma:
-        if secondRotor[0] == 'P':
-            thirdRotor = shift(thirdRotor, 1)
 
     firstRotorReversed = reverse(firstRotor)
     secondRotorReversed = reverse(secondRotor)
