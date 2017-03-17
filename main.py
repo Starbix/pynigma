@@ -177,3 +177,4 @@ for i in range(0,len(textArray)):
     thirdRotorReversed = reverse(thirdRotor)
 
     print(colors.GREEN + colors.BOLD + firstRotorReversed[ABC.index(secondRotorReversed[ABC.index(thirdRotorReversed[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
+print('')
