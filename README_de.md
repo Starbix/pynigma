@@ -18,13 +18,13 @@ Wie es funktioniert:
     11. Steckbrett durchlaufen (momentan nicht unterstützt)
     12. Zahl zu Buchstaben konvertieren
 
-##Zahlen
+## Zahlen
 
 Zahlen:
 ![Zahlen](http://enigma.louisedade.co.uk/numberkeys.png)
 
 Um Zahlen in Nachrichten zu benutzen, muss man den Buchstaben "Y" vor der Zahl schreiben. Und als Zahl muss man Buchstaben benutzen wie man im obigen Bild sieht.
 
-##Resourcen
+## Ressourcen
 - http://enigma.louisedade.co.uk/howitworks.html
 - https://de.wikipedia.org/wiki/Enigma-Walzen (Rotor Information)
