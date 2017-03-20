@@ -5,7 +5,7 @@ Support for other rotors, UKWs (Umkehrwalzen) and ETWs (Eintrittswalzen) can eas
 
 Wie es funktioniert:
 
-     1. Input Buchstabe zu einer Zahlkonvertieren
+     1. Input Buchstabe zu einer Zahl konvertieren
      2. Rotoren rotieren
      3. Steckbrett durchlaufen (momentan nicht unterstützt)
      4. Rechten Rotor durchlaufen

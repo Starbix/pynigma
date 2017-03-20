@@ -28,4 +28,4 @@ To include numbers in your message, you first need to indicate that you are abou
 
 ## Resources
 - http://enigma.louisedade.co.uk/howitworks.html
-- https://de.wikipedia.org/wiki/Enigma-Walzen (Rotor information)
+- https://en.wikipedia.org/wiki/Enigma_rotor_details (Rotor information)
