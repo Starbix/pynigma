@@ -60,21 +60,21 @@ if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == third
 firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > firstRotorPosition or firstRotorPosition > 25:
     print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
-    firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] "))
+    firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > firstRotorPosition or firstRotorPosition > 25:
         print(colors.RED +"Choose a value between 1 and 26" + colors.ENDC)
         exit()
 secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > secondRotorPosition or secondRotorPosition > 25:
     print("Choose a value between 1 and 26")
-    secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] "))
+    secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > secondRotorPosition or secondRotorPosition > 25:
         print("Choose a value between 1 and 26")
         exit()
 thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > thirdRotorPosition or thirdRotorPosition > 25:
     print("Choose a value between 1 and 26")
-    thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] "))
+    thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > thirdRotorPosition or thirdRotorPosition > 25:
         print("Choose a value between 1 and 26")
         exit()
