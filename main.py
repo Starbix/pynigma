@@ -126,13 +126,13 @@ for i in range(0,len(textArray)):
         if firstRotor[0] == 'V':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VI:
-        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+        if firstRotor[0] == 'J' or firstRotor[0] == 'H':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VII:
-        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+        if firstRotor[0] == 'N' or firstRotor[0] == 'O':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VIII:
-        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
+        if firstRotor[0] == 'F' or firstRotor[0] == 'D':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == beta:
         if firstRotor[0] == 'P':
@@ -156,13 +156,13 @@ for i in range(0,len(textArray)):
         if secondRotor[0] == 'V':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VI:
-        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+        if secondRotor[0] == 'J' or secondRotor[0] == 'H':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VII:
-        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+        if secondRotor[0] == 'N' or secondRotor[0] == 'O':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VIII:
-        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
+        if secondRotor[0] == 'F' or secondRotor[0] == 'D':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == beta:
         if secondRotor[0] == 'P':
