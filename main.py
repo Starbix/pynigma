@@ -4,7 +4,7 @@ import sys
 import string
 from collections import deque
 import os
-
+#use colors class for better input and output
 if os.name == "posix":
     class colors:
         HEADER = '\033[95m'
@@ -26,7 +26,7 @@ else:
         BOLD = ''
         UNDERLINE = ''
 
-
+#Alphabet list for converting input letters to numbers
 ABC = list(string.ascii_uppercase)
 
 I = ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J']
@@ -37,6 +37,7 @@ V = ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 
 VI = ['J', 'P', 'G', 'V', 'O', 'U', 'M', 'F', 'Y', 'Q', 'B', 'E', 'N', 'H', 'Z', 'R', 'D', 'K', 'A', 'S', 'X', 'L', 'I', 'C', 'T', 'W']
 VII = ['N', 'Z', 'J', 'H', 'G', 'R', 'C', 'X', 'M', 'Y', 'S', 'W', 'B', 'O', 'U', 'F', 'A', 'I', 'V', 'L', 'P', 'E', 'K', 'Q', 'D', 'T']
 VIII = ['F', 'K', 'Q', 'H', 'T', 'L', 'X', 'O', 'C', 'B', 'J', 'S', 'P', 'D', 'Z', 'R', 'A', 'M', 'E', 'W', 'N', 'I', 'U', 'Y', 'G', 'V']
+#beta and gamma were used in the Enigma M4
 beta = ['L', 'E', 'Y', 'J', 'V', 'C', 'N', 'I', 'X', 'W', 'P', 'B', 'Q', 'M', 'D', 'R', 'T', 'A', 'K', 'Z', 'G', 'F', 'U', 'H', 'O', 'S']
 gamma = ['F', 'S', 'O', 'K', 'A', 'N', 'U', 'E', 'R', 'H', 'M', 'B', 'T', 'I', 'Y', 'C', 'W', 'L', 'Q', 'P', 'Z', 'X', 'V', 'G', 'J', 'D']
 A = ['E', 'J', 'M', 'Z', 'A', 'L', 'Y', 'X', 'V', 'B', 'W', 'F', 'C', 'R', 'Q', 'U', 'O', 'N', 'T', 'S', 'P', 'I', 'K', 'H', 'G', 'D']
@@ -46,17 +47,17 @@ B_thin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 
 C_thin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
 firstRotor = eval(input("Choose the " + colors.BOLD + "first " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
-
+#use static rotor for correct turning
 firstRotorStatic = firstRotor
 secondRotor = eval(input("Choose the " + colors.BOLD + "second " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
 secondRotorStatic = secondRotor
 thirdRotor = eval(input("Choose the " + colors.BOLD + "third " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
-#fourthRotor
-
+#fourthRotor for Enigma M4
+#check if every Rotor is only used once
 if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == thirdRotor:
     print("Each rotor can only be used once")
     exit()
-
+#get the initial positions of the rotors
 firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > firstRotorPosition or firstRotorPosition > 25:
     print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
@@ -82,15 +83,16 @@ if 0 > thirdRotorPosition or thirdRotorPosition > 25:
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
 input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
+#convert text to only upper case letters
 input = input.upper()
-
+#
 if len(set(string.digits).intersection(input)) > 0:
     print(colors.RED + colors.BOLD +  "Refer to the README. Don't use digits")
     if (' ' in input):
         print("and no space!")
     print(colors.ENDC)
     exit(127)
-
+#convert input to list
 textArray = list(input)
 
 def reverse(array):
@@ -99,17 +101,18 @@ def reverse(array):
         reverseRotor.append(ABC[array.index(ABC[s])])
     return reverseRotor
 
-#check if it's the correct way!!!
+#check if it's the correct way
 def shift(array, int):
     return array[int:] + array[:int]
 
+#shift to initial positions
 firstRotor=shift(firstRotor, firstRotorPosition)
 secondRotor=shift(secondRotor, secondRotorPosition)
 thirdRotor=shift(thirdRotor, thirdRotorPosition)
 
 for i in range(0,len(textArray)):
     firstRotor=shift(firstRotor, 1)
-#check if any is at the turnover notch position
+#check if any rotor is at the turnover notch position
     if firstRotorStatic == I:
         if firstRotor[0] == 'U':
             secondRotor = shift(secondRotor, 1)
@@ -126,13 +129,13 @@ for i in range(0,len(textArray)):
         if firstRotor[0] == 'V':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VI:
-        if firstRotor[0] == 'J' or firstRotor[0] == 'H':
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VII:
-        if firstRotor[0] == 'N' or firstRotor[0] == 'O':
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == VIII:
-        if firstRotor[0] == 'F' or firstRotor[0] == 'D':
+        if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
     elif firstRotorStatic == beta:
         if firstRotor[0] == 'P':
@@ -156,18 +159,18 @@ for i in range(0,len(textArray)):
         if secondRotor[0] == 'V':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VI:
-        if secondRotor[0] == 'J' or secondRotor[0] == 'H':
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VII:
-        if secondRotor[0] == 'N' or secondRotor[0] == 'O':
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == VIII:
-        if secondRotor[0] == 'F' or secondRotor[0] == 'D':
+        if secondRotor[0] == 'P' or secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
     elif secondRotorStatic == beta:
         if secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
-
+#reverse the rotors
     firstRotorReversed = reverse(firstRotor)
     secondRotorReversed = reverse(secondRotor)
     thirdRotorReversed = reverse(thirdRotor)
