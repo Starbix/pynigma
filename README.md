@@ -27,5 +27,5 @@ Numbers:
 To include numbers in your message, you first need to indicate that you are about to use a number by entering the letter "Y" before each number. So, to encode the number 5 in your message you would type in "YT", the number 6 would be "YZ", and 42 would be "YRW".
 
 ## Resources
-- http://enigma.louisedade.co.uk/howitworks.html
-- https://en.wikipedia.org/wiki/Enigma_rotor_details (Rotor information)
+- <http://enigma.louisedade.co.uk/howitworks.html>
+- [Rotor information] (https://en.wikipedia.org/wiki/Enigma_rotor_details)
