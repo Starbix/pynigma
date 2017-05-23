@@ -4,7 +4,7 @@ import sys
 import string
 from collections import deque
 import os
-#use colors class for better input and output
+#use colors class for better input and output, while still supporting NT based OSs
 if os.name == "posix":
     class colors:
         HEADER = '\033[95m'
@@ -29,6 +29,7 @@ else:
 #Alphabet list for converting input letters to numbers
 ABC = list(string.ascii_uppercase)
 
+#define the Walzen
 I = ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J']
 II = ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E']
 III = ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O']
@@ -46,6 +47,7 @@ C = ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', 'W', 'G', 
 B_thin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 'L', 'M', 'D', 'X', 'Z', 'V', 'F', 'T', 'H', 'R', 'G', 'S']
 C_thin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
+#get input from user
 firstRotor = eval(input("Choose the " + colors.BOLD + "first " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
 #use static rotor for correct turning
 firstRotorStatic = firstRotor
@@ -79,13 +81,20 @@ if 0 > thirdRotorPosition or thirdRotorPosition > 25:
     if 0 > thirdRotorPosition or thirdRotorPosition > 25:
         print("Choose a value between 1 and 26")
         exit()
-
+#let the user choose the reflector
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
+#use plugboard?
+usePlugboard = input("Do you want to use the plugboard ? [yes/no]")
+if usePlugboard == "yes":
+    print("Plugboard enabled")
+    
+    
+#input text from user
 input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
 #convert text to only upper case letters
 input = input.upper()
-#
+#check for numbers in input
 if len(set(string.digits).intersection(input)) > 0:
     print(colors.RED + colors.BOLD +  "Refer to the README. Don't use digits")
     if (' ' in input):
@@ -95,13 +104,13 @@ if len(set(string.digits).intersection(input)) > 0:
 #convert input to list
 textArray = list(input)
 
-def reverse(array):
+#define reverse function for the way "back"
     reverseRotor = []
     for s in range(0, 26):
         reverseRotor.append(ABC[array.index(ABC[s])])
     return reverseRotor
 
-#check if it's the correct way
+#define shift function for shifting the rotors
 def shift(array, int):
     return array[int:] + array[:int]
 
@@ -110,7 +119,9 @@ firstRotor=shift(firstRotor, firstRotorPosition)
 secondRotor=shift(secondRotor, secondRotorPosition)
 thirdRotor=shift(thirdRotor, thirdRotorPosition)
 
+#run code once for every letter in the input
 for i in range(0,len(textArray)):
+#initial shift    
     firstRotor=shift(firstRotor, 1)
 #check if any rotor is at the turnover notch position
     if firstRotorStatic == I:
@@ -128,6 +139,7 @@ for i in range(0,len(textArray)):
     elif firstRotorStatic == V:
         if firstRotor[0] == 'V':
             secondRotor = shift(secondRotor, 1)
+#some rotors have two turnover positions    
     elif firstRotorStatic == VI:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
@@ -175,5 +187,8 @@ for i in range(0,len(textArray)):
     secondRotorReversed = reverse(secondRotor)
     thirdRotorReversed = reverse(thirdRotor)
 
+#most important piece of the script
+#it basically takes the position of the letter in the list which then gets passed through the rotors, reflector and reverse rotors
     print(colors.GREEN + colors.BOLD + firstRotorReversed[ABC.index(secondRotorReversed[ABC.index(thirdRotorReversed[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
+#was needed for better looks
 print('')
