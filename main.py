@@ -84,11 +84,14 @@ if 0 > thirdRotorPosition or thirdRotorPosition > 25:
 #let the user choose the reflector
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
 #use plugboard?
-usePlugboard = input("Do you want to use the plugboard ? [yes/no]")
+usePlugboard = input("Do you want to use the plugboard ? [yes/no] ")
 if usePlugboard == "yes":
-    print("Plugboard enabled")
-    
-    
+    print(colors.GREEN + "Plugboard enabled" + colors.ENDC)
+    mappings = eval(input("How many plugs do you want to use ? [1-26] "))
+    for m in range(mappings):
+       print(m)
+
+
 #input text from user
 input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
@@ -105,6 +108,7 @@ if len(set(string.digits).intersection(input)) > 0:
 textArray = list(input)
 
 #define reverse function for the way "back"
+def reverse(array):
     reverseRotor = []
     for s in range(0, 26):
         reverseRotor.append(ABC[array.index(ABC[s])])
@@ -121,7 +125,7 @@ thirdRotor=shift(thirdRotor, thirdRotorPosition)
 
 #run code once for every letter in the input
 for i in range(0,len(textArray)):
-#initial shift    
+#initial shift
     firstRotor=shift(firstRotor, 1)
 #check if any rotor is at the turnover notch position
     if firstRotorStatic == I:
@@ -139,7 +143,7 @@ for i in range(0,len(textArray)):
     elif firstRotorStatic == V:
         if firstRotor[0] == 'V':
             secondRotor = shift(secondRotor, 1)
-#some rotors have two turnover positions    
+#some rotors have two turnover positions
     elif firstRotorStatic == VI:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
