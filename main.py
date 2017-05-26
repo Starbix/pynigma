@@ -2,9 +2,10 @@
 
 import sys
 import string
-from collections import deque
+# from collections import deque
 import os
-#use colors class for better input and output, while still supporting NT based OSs
+
+# use colors class for better input and output, while still supporting NT based OSs
 if os.name == "posix":
     class colors:
         HEADER = '\033[95m'
@@ -26,10 +27,10 @@ else:
         BOLD = ''
         UNDERLINE = ''
 
-#Alphabet list for converting input letters to numbers
+# Alphabet list for converting input letters to numbers
 ABC = list(string.ascii_uppercase)
 
-#define the Walzen
+# define the Walzen
 I = ['E', 'K', 'M', 'F', 'L', 'G', 'D', 'Q', 'V', 'Z', 'N', 'T', 'O', 'W', 'Y', 'H', 'X', 'U', 'S', 'P', 'A', 'I', 'B', 'R', 'C', 'J']
 II = ['A', 'J', 'D', 'K', 'S', 'I', 'R', 'U', 'X', 'B', 'L', 'H', 'W', 'T', 'M', 'C', 'Q', 'G', 'Z', 'N', 'P', 'Y', 'F', 'V', 'O', 'E']
 III = ['B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 'Z', 'N', 'Y', 'E', 'I', 'W', 'G', 'A', 'K', 'M', 'U', 'S', 'Q', 'O']
@@ -38,7 +39,7 @@ V = ['V', 'Z', 'B', 'R', 'G', 'I', 'T', 'Y', 'U', 'P', 'S', 'D', 'N', 'H', 'L', 
 VI = ['J', 'P', 'G', 'V', 'O', 'U', 'M', 'F', 'Y', 'Q', 'B', 'E', 'N', 'H', 'Z', 'R', 'D', 'K', 'A', 'S', 'X', 'L', 'I', 'C', 'T', 'W']
 VII = ['N', 'Z', 'J', 'H', 'G', 'R', 'C', 'X', 'M', 'Y', 'S', 'W', 'B', 'O', 'U', 'F', 'A', 'I', 'V', 'L', 'P', 'E', 'K', 'Q', 'D', 'T']
 VIII = ['F', 'K', 'Q', 'H', 'T', 'L', 'X', 'O', 'C', 'B', 'J', 'S', 'P', 'D', 'Z', 'R', 'A', 'M', 'E', 'W', 'N', 'I', 'U', 'Y', 'G', 'V']
-#beta and gamma were used in the Enigma M4
+# beta and gamma were used in the Enigma M4
 beta = ['L', 'E', 'Y', 'J', 'V', 'C', 'N', 'I', 'X', 'W', 'P', 'B', 'Q', 'M', 'D', 'R', 'T', 'A', 'K', 'Z', 'G', 'F', 'U', 'H', 'O', 'S']
 gamma = ['F', 'S', 'O', 'K', 'A', 'N', 'U', 'E', 'R', 'H', 'M', 'B', 'T', 'I', 'Y', 'C', 'W', 'L', 'Q', 'P', 'Z', 'X', 'V', 'G', 'J', 'D']
 A = ['E', 'J', 'M', 'Z', 'A', 'L', 'Y', 'X', 'V', 'B', 'W', 'F', 'C', 'R', 'Q', 'U', 'O', 'N', 'T', 'S', 'P', 'I', 'K', 'H', 'G', 'D']
@@ -47,87 +48,90 @@ C = ['F', 'V', 'P', 'J', 'I', 'A', 'O', 'Y', 'E', 'D', 'R', 'Z', 'X', 'W', 'G', 
 B_thin = ['E', 'N', 'K', 'Q', 'A', 'U', 'Y', 'W', 'J', 'I', 'C', 'O', 'P', 'B', 'L', 'M', 'D', 'X', 'Z', 'V', 'F', 'T', 'H', 'R', 'G', 'S']
 C_thin = ['R', 'D', 'O', 'B', 'J', 'N', 'T', 'K', 'V', 'E', 'H', 'M', 'L', 'F', 'C', 'W', 'Z', 'A', 'X', 'G', 'Y', 'I', 'P', 'S', 'U', 'Q']
 
-#get input from user
+# get input from user
 firstRotor = eval(input("Choose the " + colors.BOLD + "first " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
-#use static rotor for correct turning
+# use static rotor for correct turning
 firstRotorStatic = firstRotor
 secondRotor = eval(input("Choose the " + colors.BOLD + "second " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
 secondRotorStatic = secondRotor
 thirdRotor = eval(input("Choose the " + colors.BOLD + "third " + colors.ENDC + "rotor (each rotor can only be used once) [I/II/III/IV/V/VI/VII/VIII] "))
-#fourthRotor for Enigma M4
-#check if every Rotor is only used once
+# fourthRotor for Enigma M4
+# check if every Rotor is only used once
 if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == thirdRotor:
-    print("Each rotor can only be used once")
-    exit()
-#get the initial positions of the rotors
+    print(colors.RED + "Each rotor can only be used once" + colors.ENDC)
+    sys.exit(1)
+# get the initial positions of the rotors
 firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > firstRotorPosition or firstRotorPosition > 25:
-    print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
+    print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
     firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > firstRotorPosition or firstRotorPosition > 25:
-        print(colors.RED +"Choose a value between 1 and 26" + colors.ENDC)
-        exit()
+        print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
+        sys.exit(1)
 secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > secondRotorPosition or secondRotorPosition > 25:
-    print("Choose a value between 1 and 26")
+    print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
     secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > secondRotorPosition or secondRotorPosition > 25:
-        print("Choose a value between 1 and 26")
-        exit()
+        print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
+        sys.exit(1)
 thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
 if 0 > thirdRotorPosition or thirdRotorPosition > 25:
-    print("Choose a value between 1 and 26")
+    print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
     thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
     if 0 > thirdRotorPosition or thirdRotorPosition > 25:
-        print("Choose a value between 1 and 26")
-        exit()
-#let the user choose the reflector
+        print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
+        sys.exit(1)
+# let the user choose the reflector
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
-#use plugboard?
+# use plugboard?
 usePlugboard = input("Do you want to use the plugboard ? [yes/no] ")
 if usePlugboard == "yes":
     print(colors.GREEN + "Plugboard enabled" + colors.ENDC)
     mappings = eval(input("How many plugs do you want to use ? [1-26] "))
-    for m in range(mappings):
-       print(m)
+    if 1 > mappings or mappings > 26:
+        print("Choose a value between 1 and 26")
+        sys.exit(1)
+# create dictionary for plug pairs
+    plugDict = dict(input("Enter plug pair number {}. Only use uppercase characters and only use every letter once. [A J] ".format(m+1)).split() for m in range(mappings))
 
 
-#input text from user
+# input text from user
 input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
-#convert text to only upper case letters
+# convert text to only upper case letters
 input = input.upper()
-#check for numbers in input
+# check for numbers in input
 if len(set(string.digits).intersection(input)) > 0:
-    print(colors.RED + colors.BOLD +  "Refer to the README. Don't use digits")
+    print(colors.RED + colors.BOLD + "Refer to the README. Don't use digits")
     if (' ' in input):
         print("and no space!")
     print(colors.ENDC)
-    exit(127)
-#convert input to list
+    sys.exit(1)
+# convert input to list
 textArray = list(input)
 
-#define reverse function for the way "back"
+# define reverse function for the way "back"
 def reverse(array):
     reverseRotor = []
     for s in range(0, 26):
         reverseRotor.append(ABC[array.index(ABC[s])])
     return reverseRotor
 
-#define shift function for shifting the rotors
+# define shift function for shifting the rotors
 def shift(array, int):
     return array[int:] + array[:int]
 
-#shift to initial positions
-firstRotor=shift(firstRotor, firstRotorPosition)
-secondRotor=shift(secondRotor, secondRotorPosition)
-thirdRotor=shift(thirdRotor, thirdRotorPosition)
+# shift to initial positions
+firstRotor = shift(firstRotor, firstRotorPosition)
+secondRotor = shift(secondRotor, secondRotorPosition)
+thirdRotor = shift(thirdRotor, thirdRotorPosition)
 
-#run code once for every letter in the input
-for i in range(0,len(textArray)):
-#initial shift
-    firstRotor=shift(firstRotor, 1)
-#check if any rotor is at the turnover notch position
+# run code once for every letter in the input
+for i in range(0, len(textArray)):
+    # initial shift
+    firstRotor = shift(firstRotor, 1)
+    # check if any rotor is at the turnover notch position
     if firstRotorStatic == I:
         if firstRotor[0] == 'U':
             secondRotor = shift(secondRotor, 1)
@@ -143,7 +147,7 @@ for i in range(0,len(textArray)):
     elif firstRotorStatic == V:
         if firstRotor[0] == 'V':
             secondRotor = shift(secondRotor, 1)
-#some rotors have two turnover positions
+# some rotors have two turnover positions
     elif firstRotorStatic == VI:
         if firstRotor[0] == 'P' or firstRotor[0] == 'P':
             secondRotor = shift(secondRotor, 1)
@@ -186,13 +190,14 @@ for i in range(0,len(textArray)):
     elif secondRotorStatic == beta:
         if secondRotor[0] == 'P':
             thirdRotor = shift(thirdRotor, 1)
-#reverse the rotors
+# reverse the rotors
     firstRotorReversed = reverse(firstRotor)
     secondRotorReversed = reverse(secondRotor)
     thirdRotorReversed = reverse(thirdRotor)
 
-#most important piece of the script
-#it basically takes the position of the letter in the list which then gets passed through the rotors, reflector and reverse rotors
+#   if textArray[i]
+# most important piece of the script
+# it basically takes the position of the letter in the list which then gets passed through the rotors, reflector and reverse rotors
     print(colors.GREEN + colors.BOLD + firstRotorReversed[ABC.index(secondRotorReversed[ABC.index(thirdRotorReversed[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
-#was needed for better looks
+# was needed for better looks
 print('')
