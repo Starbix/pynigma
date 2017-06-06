@@ -87,9 +87,9 @@ reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
 usePlugboard = input("Do you want to use the plugboard ? [yes/no] ")
 if usePlugboard == "yes":
     print(colors.GREEN + "Plugboard enabled" + colors.ENDC)
-    mappings = eval(input("How many plugs do you want to use ? [1-26] "))
-    if 1 > mappings or mappings > 26:
-        print("Choose a value between 1 and 26")
+    mappings = eval(input("How many plugs do you want to use ? [1-13] "))
+    if 1 > mappings or mappings > 13:
+        print("Choose a value between 1 and 13")
         sys.exit(1)
 # create dictionary for plug pairs
     plugDict = dict(input("Enter plug pair number {}. Only use uppercase characters and only use every letter once. eg. [A J] ".format(m+1)).split() for m in range(mappings))
@@ -128,6 +128,9 @@ thirdRotor = shift(thirdRotor, thirdRotorPosition)
 
 # run code once for every letter in the input
 for i in range(0, len(textArray)):
+    for m in range(0, mappings):
+        
+    if textArray[i] in plugDict or textArray[i] any(x in textArray[i] for x in plugDict)
     # initial shift
     firstRotor = shift(firstRotor, 1)
     # check if any rotor is at the turnover notch position
@@ -194,7 +197,6 @@ for i in range(0, len(textArray)):
     secondRotorReversed = reverse(secondRotor)
     thirdRotorReversed = reverse(thirdRotor)
 
-#   if textArray[i]
 # most important piece of the script
 # it basically takes the position of the letter in the list which then gets passed through the rotors, reflector and reverse rotors
     print(colors.GREEN + colors.BOLD + firstRotorReversed[ABC.index(secondRotorReversed[ABC.index(thirdRotorReversed[ABC.index(reflector[ABC.index(thirdRotor[ABC.index(secondRotor[ABC.index(firstRotor[ABC.index(textArray[i])])])])])])])] + colors.ENDC, end="")
