@@ -2,7 +2,6 @@
 
 import sys
 import string
-# from collections import deque
 import os
 
 # use colors class for better input and output, while still supporting NT based OSs
@@ -93,7 +92,7 @@ if usePlugboard == "yes":
         print("Choose a value between 1 and 26")
         sys.exit(1)
 # create dictionary for plug pairs
-    plugDict = dict(input("Enter plug pair number {}. Only use uppercase characters and only use every letter once. [A J] ".format(m+1)).split() for m in range(mappings))
+    plugDict = dict(input("Enter plug pair number {}. Only use uppercase characters and only use every letter once. eg. [A J] ".format(m+1)).split() for m in range(mappings))
 
 
 # input text from user
