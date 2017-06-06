@@ -7,3 +7,6 @@ Einleitung:
 Unser Ziel war es eine Programm zu schreiben welches uns erlaubt die Funktionen der Enigma M3 Verschlüsselungsmaschiene zu simulieren. Im folgenden Dokument wollen wir euch näher bringen wie das Programm funktioniert.
 Wir haben uns für dieses Projekt entschieden weil wir nicht ei rein Mathematisches Programm schreiben wollten und weil wir das Thema Kryptographie spannend fanden. 
 Inspiration gegeben, haben uns die Filme "Enigma"(2001) und "The Imitation Game"(2014)
+
+Theorie:
+sehr sicher http://www.ostfalia.de/cms/de/pws/seutter/kryptologie/enigma/Sicherheit/Sicherheit/sicherheit2.html
