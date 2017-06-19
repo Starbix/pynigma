@@ -83,17 +83,6 @@ if 0 > thirdRotorPosition or thirdRotorPosition > 25:
         sys.exit(1)
 # let the user choose the reflector
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
-# use plugboard?
-usePlugboard = input("Do you want to use the plugboard ? [yes/no] ")
-if usePlugboard == "yes":
-    print(colors.GREEN + "Plugboard enabled" + colors.ENDC)
-    mappings = eval(input("How many plugs do you want to use ? [1-13] "))
-    if 1 > mappings or mappings > 13:
-        print("Choose a value between 1 and 13")
-        sys.exit(1)
-# create dictionary for plug pairs
-    plugDict = dict(input("Enter plug pair number {}. Only use uppercase characters and only use every letter once. eg. [A J] ".format(m+1)).split() for m in range(mappings))
-
 
 # input text from user
 input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
@@ -117,9 +106,11 @@ def reverse(array):
         reverseRotor.append(ABC[array.index(ABC[s])])
     return reverseRotor
 
+
 # define shift function for shifting the rotors
 def shift(array, int):
     return array[int:] + array[:int]
+
 
 # shift to initial positions
 firstRotor = shift(firstRotor, firstRotorPosition)
@@ -129,7 +120,7 @@ thirdRotor = shift(thirdRotor, thirdRotorPosition)
 # run code once for every letter in the input
 for i in range(0, len(textArray)):
     #for m in range(0, mappings):
-        
+
     #if textArray[i] in plugDict or textArray[i] any(x in textArray[i] for x in plugDict)
     # initial shift
     firstRotor = shift(firstRotor, 1)
