@@ -119,9 +119,7 @@ thirdRotor = shift(thirdRotor, thirdRotorPosition)
 
 # run code once for every letter in the input
 for i in range(0, len(textArray)):
-    #for m in range(0, mappings):
 
-    #if textArray[i] in plugDict or textArray[i] any(x in textArray[i] for x in plugDict)
     # initial shift
     firstRotor = shift(firstRotor, 1)
     # check if any rotor is at the turnover notch position
