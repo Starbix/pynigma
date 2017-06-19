@@ -99,6 +99,7 @@ if len(set(string.digits).intersection(input)) > 0:
 # convert input to list
 textArray = list(input)
 
+
 # define reverse function for the way "back"
 def reverse(array):
     reverseRotor = []
