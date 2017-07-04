@@ -1,6 +1,6 @@
 # pynigma
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/starbix/pynigma)
+[![license](https://img.shields.io/github/license/starbix/pynigma.svg)](https://github.com/starbix/pynigma)
 
 This python program should emulate an Enigma M3, which was used by the Navy, Airforce and Army. The M3 three uses 3 wheels while the M4 uses 4 wheels. The two machines are only compatible with each other with certain settings.
 
