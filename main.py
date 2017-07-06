@@ -60,44 +60,44 @@ if firstRotor == secondRotor or firstRotor == thirdRotor or secondRotor == third
     print(colors.RED + "Each rotor can only be used once" + colors.ENDC)
     sys.exit(1)
 # get the initial positions of the rotors
-firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
-if 0 > firstRotorPosition or firstRotorPosition > 25:
+firstRotorPosition = int(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
+if firstRotorPosition < 0 or firstRotorPosition > 25:
     print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
-    firstRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
-    if 0 > firstRotorPosition or firstRotorPosition > 25:
+    firstRotorPosition = int(input("Choose the position of the " + colors.BOLD + "first " + colors.ENDC + "rotor [1-26] ")) - 1
+    if firstRotorPosition < 0 or firstRotorPosition > 25:
         print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
         sys.exit(1)
-secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
-if 0 > secondRotorPosition or secondRotorPosition > 25:
+secondRotorPosition = int(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
+if secondRotorPosition < 0 or secondRotorPosition > 25:
     print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
-    secondRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
-    if 0 > secondRotorPosition or secondRotorPosition > 25:
+    secondRotorPosition = int(input("Choose the position of the " + colors.BOLD + "second " + colors.ENDC + "rotor [1-26] ")) - 1
+    if secondRotorPosition < 0 or secondRotorPosition > 25:
         print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
         sys.exit(1)
-thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
-if 0 > thirdRotorPosition or thirdRotorPosition > 25:
+thirdRotorPosition = int(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
+if thirdRotorPosition < 0 or thirdRotorPosition > 25:
     print(colors.WARNING + "Choose a value between 1 and 26" + colors.ENDC)
-    thirdRotorPosition = eval(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
-    if 0 > thirdRotorPosition or thirdRotorPosition > 25:
+    thirdRotorPosition = int(input("Choose the position of the " + colors.BOLD + "third " + colors.ENDC + "rotor [1-26] ")) - 1
+    if thirdRotorPosition < 0 or thirdRotorPosition > 25:
         print(colors.RED + "Choose a value between 1 and 26" + colors.ENDC)
         sys.exit(1)
 # let the user choose the reflector
 reflector = eval(input("Choose reflector [A/B/C/B_thin/C_thin] "))
 
 # input text from user
-input = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
+inputtext = input("Please type your text you want to decode or encode. Use 'X' as space or a stop. ")
 
 # convert text to only upper case letters
-input = input.upper()
+inputtext = inputtext.upper()
 # check for numbers in input
-if len(set(string.digits).intersection(input)) > 0:
+if len(set(string.digits).intersection(inputtext)) > 0:
     print(colors.RED + colors.BOLD + "Refer to the README. Don't use digits")
-    if (' ' in input):
+    if ' ' in inputtext:
         print("and no space!")
     print(colors.ENDC)
     sys.exit(1)
 # convert input to list
-textArray = list(input)
+textArray = list(inputtext)
 
 
 # define reverse function for the way "back"
