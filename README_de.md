@@ -25,6 +25,9 @@ Zahlen:
 
 Um Zahlen in Nachrichten zu benutzen, muss man den Buchstaben "Y" vor der Zahl schreiben. Und als Zahl muss man Buchstaben benutzen wie man im obigen Bild sieht.
 
+## Dokumentation
+- [Pynigma.pdf](https://starbix.github.io/pynigma/Pynigma.pdf)
+
 ## Ressourcen
 - [Wie es funktioniert](http://enigma.louisedade.co.uk/howitworks.html)
 - [Info zu Rotoren](https://de.wikipedia.org/wiki/Enigma-Walzen)
