@@ -1,5 +1,7 @@
 # pynigma
 
+[![license](https://img.shields.io/github/license/starbix/pynigma.svg)](https://github.com/starbix/pynigma)
+
 Dieses Pythonscript sollte eine Enigma M3 emulieren. Die M3 benutzt 3 Rotoren, während die M4 4 Rotoren benutzt. Sie sind nur unter bestimmten Einstellungen kompatibel.
 Support for other rotors, UKWs (Umkehrwalzen) and ETWs (Eintrittswalzen) can easily be added.
 
