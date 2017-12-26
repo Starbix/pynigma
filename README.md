@@ -1,8 +1,10 @@
 # pynigma
 
+> An Enigma M3 emulator written in Python 3
+
 [![license](https://img.shields.io/github/license/starbix/pynigma.svg)](https://github.com/starbix/pynigma)
 
-This python program should emulate an Enigma M3, which was used by the Navy, Airforce and Army. The M3 three uses 3 wheels while the M4 uses 4 wheels. The two machines are only compatible with each other with certain settings.
+This python program emulates an Enigma M3, which was used by the Navy, Airforce and Army. The M3 three uses 3 wheels while the M4 uses 4 wheels. The two machines are only compatible with each other with certain settings.
 
 Support for other rotors, UKWs (Umkehrwalzen) and ETWs (Eintrittswalzen) can easily be added.
 
@@ -35,3 +37,8 @@ To include numbers in your message, you first need to indicate that you are abou
 ## Resources
 - [How it works](http://enigma.louisedade.co.uk/howitworks.html)
 - [Rotor information](https://en.wikipedia.org/wiki/Enigma_rotor_details)
+
+
+## License
+
+GPLv3 © 2017 Cédric Laubacher
