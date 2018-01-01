@@ -41,4 +41,4 @@ To include numbers in your message, you first need to indicate that you are abou
 
 ## License
 
-GPLv3 © 2017 Cédric Laubacher
+GPLv3 © 2018 Cédric Laubacher

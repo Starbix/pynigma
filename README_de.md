@@ -33,3 +33,7 @@ Um Zahlen in Nachrichten zu benutzen, muss man den Buchstaben "Y" vor der Zahl s
 ## Ressourcen
 - [Wie es funktioniert](http://enigma.louisedade.co.uk/howitworks.html)
 - [Info zu Rotoren](https://de.wikipedia.org/wiki/Enigma-Walzen)
+
+## Lizenz
+
+GPLv3 © 2018 Cédric Laubacher
